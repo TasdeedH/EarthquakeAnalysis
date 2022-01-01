@@ -1,0 +1,179 @@
+VA Possible Project Plan - Earthquake Analysis
+
+Data Cleaning:
+1. (DONE) Severe missing values in magnitude and depth features - may drop, idk about standard deviations
+2. (DONE) Extract only Earthquakes
+3. (DONE) Will only be left with Date, Time, Latitude, Longitude, Magnitude, Depth and Magnitude Type
+4. (DONE) There are suspicious dates and times that need to be fixed (karnikakapoor)
+5. (DONE) Outlier Analysis - mention black swans
+
+Feature Engineering:
+1. (DONE) Using Latitude and Longitude, extract country names - might not be possible - most are in the ocean - SOLUTION - creating a separate dataframe with countries only
+2. (DONE) Further create new columns with continents, using country only dataframe
+3. (DONE) Magnitude Type may need to all be converted to the Richter Scale, then drop Magnitude
+4. (DONE) Split Dates into Years and Months and Day, keeping Original Dates
+5. (DONE) In both 3 and 4, converting into pandas datetme
+6. (DONE) Define using depth, Shallow earthquakes are between 0 and 70 km deep; intermediate earthquakes, 70 - 300 km deep; and deep earthquakes, 300 - 700 km deep
+7. (DONE) Used MIT link
+
+Insights:
+1. (DONE) Describe tables, etc. look at skews and kurtosis, black swan principle (keep these or no?) 
+2. (DONE) Value counts for each country i.e. look at the most hit countries with earthquakes via treemap
+3. (DONE) Can we identify peculiar years of interest? or possible seasonality? via a clusermap using the
+   average magnitudes
+4. (DONE) Assess value counts for new features
+5. K-Means Clustering
+
+Temporal Effects:
+1. (DONE) Examine the change in number of earthquakes each year - increasing year on year? seasonal trends?
+ 1.1 (DONE) Examine the change in number of earthquakes within each continent - explain chosen granularity,
+     are some showing increasing signs - is this a cause for concern? what countries are these 
+     focussed on, how are their current magnitudes?
+2. (DONE) Examine changes in Magnitude - increasing earthquakes but stable magnitude? consequences? Look at groups!
+3. (DONE) Examine changes in grouped Depth - what are the consequences of this?
+
+Spatial Effects:
+0. FOLLOWING ON from 1.1. in Temporal effects, need to examine the spatial effects of the years.
+1. Add in Techtonic Plates into a map
+2. Examine the distribution of earthquakes on this
+ 2.0 Does the distribution of earthquakes support the most hit countries?
+ 2.1 Probably better to make use of binning due to a lot of overlap
+ 2.2 How does binned depth correlate to location of techtonic plates?
+ 2.3 How does binned magnitude correlate to location of techtonic plates?
+ 2.4 Should interactive plots be used to examine changes over each year instead? Do we notice patterns?
+3. Types of Plates?
+4. Where do the most dangerous earthquakes occur?
+
+Prediction:
+1. Predicting Earthquakes
+2. Is it possible to predict, for each continent, the pattern or number of earthquakes (time series analysis)
+3. Have to initially check for stationarity - use R
+4. Don't have future data - so we predict using a split version, allowing us to compare predictions
+
+Kaggle Notebooks:
+Verawe - Tree Map, Fancy Plots (all in R)
+PierreLouise - spatial plotly plots - does it so easily
+KarinaKapoor - plots techtonic plates
+boomin - weird moon guy - idk
+
+Critical Reflection:
+1. Incorporation of high magnitude volcana data - possible relation with earthquakes
+2. Moon Data, Tidal Shit, Earth Stuff 
+3. Many features had to be removed due to severely incomplete data such as cost of damages, injuries etc. so we couldn't investigate the scale of the damage although not detrimental to
+   analysis
+4. Implicitely assumed each earthquake is distinct rather than assume miniearthquakes (aftershocks) from the epicentre
+5. Further Analysis into central america - https://scits.stanford.edu/sites/g/files/sbiybj13751/f/isfc_2_rubenstein_pap_srl-2015067.pdf- only had quakes above 5.5. mag so couldnt do here
+
+
+TASK FOR 29TH
+FINISH ALL OF SPATIAL
+MAKE A START ON PREDICTION
+
+Probs Data Section - all EDA from notebook:
+Obviously including outliers, etc. show that most laid on tectonic plates.
+extensive feature engineering
+conversions
+proportion of plates (tableau)
+proportion of tecto settings (tableau)
+proportion of continents (tableau)
+proportions of countries (tableau)
+
+
+Q2:
+
+Questions - what countries should be expecting more? Is there an increase in earthquakes - can we identify where?
+these are compared to the usual shown in the treemap. how do the depth and magnitudes vary? Can we expect more destruction.
+
+So we've seen that those at sea are on the rise, it's important to look at what countries are getting affected by these - we examined the 3 increasing plates,
+narrowed it down above - and got the countries. We've examined what depths and magnitudes they have received over time and it seems to be random (verify in tableau)
+Hence inconlcusive in if we can examine what depths and magnitudes we can expect
+
+Other plates remained stable - so we can examine these as whole - usual countries will still be getting hit the same - verify this - tableau - showed same increases as with undefined
+all stable
+
+Now we the major stable plates, regardless of undefined and see what countries they're affecting - we get a list of these, and 
+
+Overall, we get a list of the  usual suseceptible. plus those who should be expecting more!
+
+Undefined - Increasing Plates over time:
+Australian - Paific, Overtime - Mag 0 and Mag 1 earthquakes increasing, and Increasing shallow overtimes, rest stable
+Carribean Cocos - Increase in Mag 0 and Mag 1, increasing shallow
+Nazca - Pacific - Increasing Mag 0, increasing shallow
+Antarctic Pacfic - Increasing Mag 0 and shallowness (low scale!!!!!!!!!)
+South American Nazca - Increasing Mag 0 and shallowness
+
+TIME PLOTS VIA TABLEAU
+Stability Analysis 
+Australian Pacific -Mag 0 always about 4x larger than Mag 1 while increasing, always about 2-4 Mag 2 each year, roughly one mag 3 each year. InteDeep always around 3-10
+Carribean Cocos - Mag 0 about double Mag 1, both increasing, Mag 2 - always one per year, always one intermediate, never deep
+Nazca-Pacific - Mag 1 stable at 2-4 yearly, mag 2, rare, if not once a year, always shallow
+Antarctic-Pacific - always about 2-4 Mag 1 only, always shallow
+SouthAmerican Nazca - always 1-2 mag 2 annually, very rarely a mag 3, mag 1 around 2-4 usually, always shallow
+
+SPATIAL PLOTS VIA TABLEAU
+Australian Pacific - Primary targets close to fault lines - New Zealand, Papua New Guinea, Vanuatu, Fiji, Indonesia- all big targets over time, and in past 5 years (2011-16)
+Carribean Cocos - All countries bordering the this fault line, many countries in south america, costa rica, panama, ecuador, colombia, nicaragua, el salvador, guatemala, mexico
+ (also haiti 2010, although rare - RECALL!), dom republic, cuba but they havent been hit recently tho. (not quite on this plate!)
+Nazca Pacific: Countries don't lie on this fault, closest countries are those such as peru, and chile. All low magnitude shallow so countries should be fine
+Antarctic Pacific: These are not close to any at all, with low magnitude earthquakes, even shallow, vibrations would likely not reach its closest - new zealand
+South America - Nazca: This is very serious for countries here - even in recent years - Many earthquakes occur on the west coast of all countries in south america, such as peru, chile
+and argentina , some occur within countries too - mag 3 earthquakes aren't particularly rare either, where this are mag 3's they're always shallow hence very destructive, most very inland
+ones are deep however. Mostly shallow close to the coast which isn't good!
+
+With these countries increasing, could it mean these plates are moving faster, or faster subduction - add in theoretical knowledge from stack exchanges on speeds etc.
+
+
+Q3 - Analysising relationship between Magnitude and Depth to location of techtonic plates overall - saw some patterns previously, now taking a spatial approach. Want to further examine
+where the most dangerous earthquakes are. reference suggests, high magnitude + shallow. Take Mag 2 and 3 with Shallow and Filter out - tableau
+
+Have chosen to select a month-year granularity rather than daily or yearly. Yearly is only over 50 years, not enough, and earthquakes don't happen daily and would be too random and
+noisy. Hence this is a good balance,
+
+talk about how support q1, seasonality doesnt appear in the ACF/PACF plots?
+
+What do we want to predict?
+A central part of earthquake research is predicting.... - this is an extremely difficult thing to do given the ..., it may be more reasonable to investigate...
+Maybe the number of earthquakes each month of each year? i.e. the next years worth of predictions i.e. the next 12
+
+Since we don't have future data, we could either make predictions on it, but can't assess it, or we backtrack a year to 2015 and predict 2016 and see how our model performs.
+
+Found two models - the second differenced one atleast passed on hypothesis test, unlike the first difference. So we'll go for the second one. Just goes to show how erratic earthquakes are
+Now need to predict and make conclusions. take about introduction of noise through differencing
+(NEED TO TRY AND AUTO PREDICTOR)
+
+differencing leads to loss of values  nth loss = n loss of values, introduced noise - arbitrarily set to 0
+
+Coding wise - it's done - need to predict - need to redo whole thing minus about a years worth of earthquakes.
+
+maybe perhaps better predicting something on a smaller scale e.g. via continent. (good point for critical reflection, given the stability of earthquakes over time, although it wouldn't
+be beneficial)
+
+Verifying Stationarity, if not differences or seasonal differences need to be taken
+Examination of ACF and PACF
+Fitting a model
+Examining p-vales and white noise like residuals
+Testing automatic prediction and seeing how it varies
+Carrying out Predictions
+Make Conclusions.
+
+Need to find one more question:
+
+All I have is, is there a relatioship between Depth and Magnitude with proximity to plate boundaries?
+
+
+Talk about what general EDA told us in the Analysis section.
+Majority convergent
+Most from these plates
+Mostly Shallow
+Mostly Mag 0 and Mag 1
+Most this continent matching plate conclusion.
+Initial outlook shows these are the most vulnerable countries - although not completely conclusive, see Q2
+
+Q1 - Peculiarity and Seasonality
+Q2 - What are the most susceptible and what countries are showing an increasing trend in earthquakes - combine to get most susceptible list
+Q3 - Can we predict the total number of earthquakes in the following year?
+
+JAPAN IS THE MOST HEAVILY HIT - DOESN'T SHOW MUCH
+
+Which is why dbscan and optics used - tell why dbscan was shit, why optics used, radians and haversine distance as best to 1% or some shit.
+
