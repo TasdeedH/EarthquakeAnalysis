@@ -5,6 +5,7 @@
 A comprehensive academic report produced as a submission for the Visual Analytics module as part of my MSc Data Science Course at City, University of London.
 
 Programming Languages: Python (Folium, Statsmodels, Scikit-Learn, Plotly and GeoPy including the commonly used Numpy, Pandas, Matplotlib and Seaborn)
+
 Visualisation Software: Tableau
 
 The report provides a spatio-temporal analysis of significant earthquakes that occured between 1965 and 2016 containing over 20,000 observations.
@@ -37,3 +38,10 @@ longitude was used for clustering with the algorithm implementing Euclidean dist
 
 As mentioned in the abstract, many complex techniques are implemented such as DBSCAN and OPTICS clustering to identify spatial hotspots, as well as risk analysis and ARIMA
 modelling and prediction for time-series hence I would recommend giving this a read!
+
+- EarthquakesCoursework.ipynb contains essentially the first half of code for this report, containing Data Wrangling, EDA, Feature Engineering and answers Q1
+- Clustering.ipynb contains the code used for Clustering, used in Q2
+- TSAnalysis.ipynb contains the code for the Time Series Modelling used in Q3
+- FinalReport_210001917.pdf contains the final report used for submission
+
+Please Note: Some important visualisations e.g. clustering results used in the report cannot be in found these Jupyter Notebooks, these were exported from Tableau
