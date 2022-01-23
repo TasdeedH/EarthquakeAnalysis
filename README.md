@@ -40,7 +40,7 @@ As mentioned in the abstract, many complex techniques are implemented such as DB
 modelling and prediction for time-series hence I would recommend giving this a read!
 
 - EarthquakesCoursework.ipynb contains essentially the first half of code for this report, containing Data Wrangling, EDA, Feature Engineering and answers Q1
-- Clustering.ipynb contains the code used for Clustering, used in Q2
+- Clustering.ipynb contains the code used for Clustering, used in Q2, this was implemented in Google Collab in comparison to other notebooks which were implemented locally
 - TSAnalysis.ipynb contains the code for the Time Series Modelling used in Q3
 - FinalReport_210001917.pdf contains the final report used for submission
 
