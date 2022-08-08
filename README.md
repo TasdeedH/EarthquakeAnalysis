@@ -2,7 +2,7 @@
 
 ----
 
-A comprehensive academic report produced as a submission for the Visual Analytics module as part of my MSc Data Science Course at City, University of London.
+A comprehensive academic report utilizing data analytics to investigate earthquakes.
 
 Programming Languages: Python (Folium, Statsmodels, Scikit-Learn, Plotly and GeoPy including the commonly used Numpy, Pandas, Matplotlib and Seaborn)
 
