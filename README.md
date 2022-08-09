@@ -1,4 +1,4 @@
-# EarthquakeAnalysis-VA
+# EarthquakeAnalysis
 
 ----
 
